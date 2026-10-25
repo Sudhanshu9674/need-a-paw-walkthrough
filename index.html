@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Need a Paw? — How it works</title>
+<meta name="copyright" content="© 2026 Need a Paw? All rights reserved." />
 <meta name="description" content="A look at Need a Paw?, a two-sided pet adoption app: how it works for adopters, and how it works for shelters, rescues and breeders." />
 <link rel="icon" href="screens/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,6 +65,9 @@
   .fact span { color:var(--muted); font-size:.95rem; }
 
   footer { padding:44px 0 64px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); }
+  footer .copy { font-family:'Nunito',sans-serif; font-weight:800; color:var(--ink); font-size:1rem; margin-bottom:14px; }
+  footer .fine { font-size:.82rem; max-width:70ch; }
+  footer a { color:var(--sage-600); }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -298,11 +302,18 @@
 
 <footer>
   <div class="wrap">
-    <p>
-      Need a Paw? — screens captured from the running application with demo data. Pets, organisations
-      and people shown here are fictional.
+    <p class="copy">© 2026 Need a Paw? All rights reserved.</p>
+    <p class="fine">
+      This page, its text, and the product and interface design shown in it are the property of
+      Need a Paw? and may not be reproduced or redistributed without permission.
     </p>
-    <p>This page is a product walkthrough. It is not the application.</p>
+    <p class="fine">
+      Screens are captured from the running application with demo data. The pets, organisations and
+      people shown are fictional. The animal photographs are CC0 or public domain, sourced from
+      <a href="https://commons.wikimedia.org" rel="noopener">Wikimedia Commons</a>, and are not
+      covered by the notice above.
+    </p>
+    <p class="fine">This page is a product walkthrough. It is not the application.</p>
   </div>
 </footer>
 
