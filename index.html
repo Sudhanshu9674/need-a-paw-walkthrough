@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Need a Paw? — How it works</title>
+<meta name="description" content="A look at Need a Paw?, a two-sided pet adoption app: how it works for adopters, and how it works for shelters, rescues and breeders." />
+<link rel="icon" href="screens/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --sage-50:#f4f7f0; --sage-100:#e4ebdc; --sage-400:#9caf88; --sage-600:#637a4e; --sage-700:#4c5f3c;
+    --cream:#f7f3e8; --sand:#eee9d9; --line:#e2dcc8;
+    --ink:#373b34; --muted:#6b7267; --terracotta:#c96f4a;
+    --radius:1.25rem;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3 { font-family:'Nunito',system-ui,sans-serif; line-height:1.15; margin:0; }
+  h1 { font-size:clamp(2.1rem,6vw,3.4rem); font-weight:900; letter-spacing:-.02em; }
+  h2 { font-size:clamp(1.6rem,4vw,2.3rem); font-weight:900; letter-spacing:-.01em; }
+  h3 { font-size:1.15rem; font-weight:800; }
+  p { margin:.6rem 0; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 16px; }
+
+  header { background:linear-gradient(115deg,#e4ebdc 0%,#f1f0df 42%,#f7f3e8 100%); padding:56px 0 64px; }
+  .brand { display:flex; align-items:center; gap:14px; margin-bottom:28px; }
+  .brand img { width:56px; height:56px; border-radius:14px; }
+  .brand span { font-family:'Nunito',sans-serif; font-weight:900; font-size:1.5rem; color:var(--sage-600); }
+  header p.lede { font-size:1.2rem; color:var(--muted); max-width:62ch; }
+  .script { font-family:'Nunito',sans-serif; font-weight:800; color:var(--sage-600); margin-top:18px; }
+
+  section { padding:56px 0; border-top:1px solid var(--line); }
+  section > .wrap > p { max-width:68ch; color:var(--muted); }
+  .eyebrow { text-transform:uppercase; letter-spacing:.08em; font-size:.78rem; font-weight:700; color:var(--sage-600); margin-bottom:8px; }
+
+  .steps { display:grid; gap:28px; margin-top:36px; }
+  @media (min-width:900px) { .steps { grid-template-columns:repeat(2,1fr); gap:36px 40px; } }
+  .step { background:#fff; border-radius:var(--radius); padding:20px; box-shadow:0 1px 2px rgba(55,59,52,.05),0 8px 24px rgba(55,59,52,.06); }
+  .step .n { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:999px; background:var(--sage-100); color:var(--sage-700); font-weight:800; font-size:.9rem; margin-bottom:10px; }
+  .step p { color:var(--muted); font-size:.98rem; }
+  .step img { width:100%; height:auto; display:block; border-radius:14px; margin-top:14px; background:var(--sand); }
+  .step img.phone { max-width:310px; margin-left:auto; margin-right:auto; border:1px solid var(--line); }
+
+  .pair { display:grid; gap:14px; margin-top:14px; }
+  @media (min-width:620px) { .pair { grid-template-columns:1fr 1fr; align-items:start; } }
+  figure { margin:0; }
+  figcaption { font-size:.8rem; color:var(--muted); margin-top:6px; text-align:center; }
+
+  .callout { background:var(--sage-50); border:1px solid var(--sage-100); border-radius:var(--radius); padding:22px 24px; margin-top:32px; }
+  .callout h3 { color:var(--sage-700); }
+  .callout p { color:var(--muted); margin-bottom:0; }
+
+  .facts { display:grid; gap:14px; margin-top:28px; }
+  @media (min-width:700px) { .facts { grid-template-columns:repeat(3,1fr); } }
+  .fact { background:#fff; border-radius:var(--radius); padding:18px 20px; box-shadow:0 1px 2px rgba(55,59,52,.05); }
+  .fact strong { display:block; font-family:'Nunito',sans-serif; font-size:1.05rem; margin-bottom:4px; }
+  .fact span { color:var(--muted); font-size:.95rem; }
+
+  footer { padding:44px 0 64px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream:#1b1d19; --sand:#24271f; --line:#343830; --ink:#eef0ea; --muted:#a8b0a2;
+      --sage-50:#232a1f; --sage-100:#2d3827; --sage-600:#a7bd8e; --sage-700:#c2d4ab;
+    }
+    :root:not([data-theme="light"]) header { background:linear-gradient(115deg,#232a1f 0%,#24271f 42%,#1b1d19 100%); }
+    :root:not([data-theme="light"]) .step,
+    :root:not([data-theme="light"]) .fact { background:#24271f; box-shadow:none; border:1px solid var(--line); }
+  }
+  :root[data-theme="dark"] {
+    --cream:#1b1d19; --sand:#24271f; --line:#343830; --ink:#eef0ea; --muted:#a8b0a2;
+    --sage-50:#232a1f; --sage-100:#2d3827; --sage-600:#a7bd8e; --sage-700:#c2d4ab;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img src="screens/logo.png" alt="" />
+      <span>need a paw?</span>
+    </div>
+    <h1>Adoption that matches on fit,<br />not just on looks.</h1>
+    <p class="lede">
+      Need a Paw? is a two-sided adoption app. Adopters answer a short lifestyle quiz; every
+      listing is then scored against it. Shelters see who is interested <em>and why they would
+      work</em>, and match back. Nobody can message anybody until both sides have said yes.
+    </p>
+    <p class="script">🐾 Better Connections. Brighter Futures. 💚</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The idea</p>
+    <h2>Most adoption sites are a filterable list</h2>
+    <p>
+      You search, you find a dog, you send an enquiry into a form, and you wait. The shelter gets
+      a pile of enquiries with no way to tell which ones would actually work out, so they answer
+      slowly, and good matches get lost in the noise.
+    </p>
+    <p>
+      Need a Paw? turns that around. The quiz answers are the product: home type, children, other
+      pets, hours away, activity level, experience and openness to special needs. Every pet carries
+      its own needs, and the two are scored against each other — in both directions.
+    </p>
+
+    <div class="facts">
+      <div class="fact"><strong>Matched on fit</strong><span>Lifestyle is compared with each pet's needs, and the reasons are shown — including the bad ones.</span></div>
+      <div class="fact"><strong>Mutual matches</strong><span>A shelter has to match back before a conversation can start, so every chat is a real lead.</span></div>
+      <div class="fact"><strong>Hidden gems</strong><span>Seniors, special-needs pets and long-stay animals are surfaced rather than buried.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">For adopters</p>
+    <h2>Finding the one</h2>
+    <p>The same account works on the phone and on the web. These are real screens, with demo data.</p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>A deck, scored for you</h3>
+        <p>
+          Each card shows the compatibility score and the reasons behind it. Filters sit along the
+          top: distance, species, and whether to include shelters, rescues or breeders.
+        </p>
+        <img class="phone" src="screens/mobile-adopter-discover.png" alt="The Discover deck on a phone, showing a 98% match with the reasons listed" />
+      </div>
+
+      <div class="step">
+        <span class="n">2</span>
+        <h3>The same deck on the web</h3>
+        <p>
+          Nothing is phone-only. Someone who starts on a laptop at work and continues on the bus
+          sees the same pets, the same scores and the same saved favourites.
+        </p>
+        <img src="screens/web-adopter-discover.png" alt="The Discover deck in a browser" />
+      </div>
+
+      <div class="step">
+        <span class="n">3</span>
+        <h3>The honest version of the listing</h3>
+        <p>
+          Opening a pet shows why you match <em>and</em> why you might not. A warning that a dog
+          needs more exercise than you have planned is more useful than a photo gallery.
+        </p>
+        <img class="phone" src="screens/mobile-adopter-pet.png" alt="A pet listing with match reasons" />
+      </div>
+
+      <div class="step">
+        <span class="n">4</span>
+        <h3>Interest, then a mutual match</h3>
+        <p>
+          Swiping right sends interest, not a message. The shelter reviews it. Only when they match
+          back does a conversation open — which is why the inbox is short and worth reading.
+        </p>
+        <img class="phone" src="screens/mobile-adopter-matches.png" alt="The adopter's matches list" />
+      </div>
+
+      <div class="step">
+        <span class="n">5</span>
+        <h3>Talking to the shelter</h3>
+        <p>
+          Once matched, messaging is direct. The pet and the compatibility score stay attached to
+          the thread, so neither side has to remember which enquiry this was.
+        </p>
+        <img class="phone" src="screens/mobile-adopter-chat.png" alt="A conversation between an adopter and a shelter" />
+      </div>
+
+      <div class="step">
+        <span class="n">6</span>
+        <h3>Following, favourites and alerts</h3>
+        <p>
+          Favourite a pet to come back to it, follow an organisation to hear what they list, or save
+          a search — "small dogs within 25 miles" — and be told when something new answers it.
+        </p>
+        <img class="phone" src="screens/mobile-adopter-updates.png" alt="The updates screen showing notifications and followed organisations" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">For shelters, rescues and breeders</p>
+    <h2>Fewer, better enquiries</h2>
+    <p>
+      An organisation account gets its own set of screens. The point is not more enquiries — it is
+      being able to tell, in a few seconds, which ones are worth a reply.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>Who is interested, and who is looking</h3>
+        <p>
+          The dashboard counts what matters: pets available, right swipes, inquiries waiting on a
+          decision, and matches. The view chart separates signed-in adopters from passers-by.
+        </p>
+        <img src="screens/web-shelter-dashboard.png" alt="The shelter dashboard in a browser" />
+      </div>
+
+      <div class="step">
+        <span class="n">2</span>
+        <h3>The same dashboard, on the phone</h3>
+        <p>
+          Shelter staff are not at a desk. Everything an organisation can do on the web — review,
+          reply, add a pet, change hours — it can do on the phone.
+        </p>
+        <img class="phone" src="screens/mobile-shelter-dashboard.png" alt="The shelter dashboard on a phone" />
+      </div>
+
+      <div class="step">
+        <span class="n">3</span>
+        <h3>Reviewing an adopter</h3>
+        <p>
+          This is the screen the whole product exists for. The adopter's living situation is summarised,
+          the compatibility score is shown, and the mismatches are spelled out plainly — "needs company,
+          and 8+ hours alone is too long". Match back, or decline, in one tap.
+        </p>
+        <img src="screens/web-shelter-inquiries.png" alt="A shelter reviewing an adopter, with compatibility reasons listed" />
+      </div>
+
+      <div class="step">
+        <span class="n">4</span>
+        <h3>Managing the listings</h3>
+        <p>
+          Pets can be drafted before they go live, put on hold, or marked adopted. Each one carries
+          the traits that drive matching, so a listing is an input rather than an advert.
+        </p>
+        <img class="phone" src="screens/mobile-shelter-pets.png" alt="An organisation's list of pets" />
+      </div>
+
+      <div class="step">
+        <span class="n">5</span>
+        <h3>One inbox, already filtered</h3>
+        <p>
+          Because conversations only exist after a mutual match, the inbox is not a slush pile.
+          Every thread is someone the organisation has already decided is a plausible home.
+        </p>
+        <img class="phone" src="screens/mobile-shelter-messages.png" alt="The shelter's message inbox" />
+      </div>
+
+      <div class="step">
+        <span class="n">6</span>
+        <h3>The organisation's own details</h3>
+        <p>
+          Opening hours, address, licence details for breeders, and the auto-match threshold — the
+          score above which an interested adopter is matched automatically rather than queued.
+        </p>
+        <img src="screens/web-shelter-settings.png" alt="Organisation settings" />
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>Organisations are verified before they appear</h3>
+      <p>
+        A new shelter, rescue or breeder is reviewed by an administrator before its listings reach
+        adopters, and breeders must supply licence details. Reports from adopters go to the same
+        queue. Every administrative action is written to an audit log nobody can edit.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">How a match actually happens</p>
+    <h2>Both sides have to say yes</h2>
+    <div class="pair">
+      <figure>
+        <img src="screens/web-adopter-favorites.png" alt="An adopter's saved pets" style="width:100%;border-radius:14px;" />
+        <figcaption>The adopter saves and sends interest</figcaption>
+      </figure>
+      <figure>
+        <img src="screens/mobile-shelter-inquiries.png" alt="A shelter reviewing an inquiry on a phone" style="width:100%;max-width:310px;margin:0 auto;display:block;border-radius:14px;border:1px solid var(--line);" />
+        <figcaption>The organisation reviews and matches back</figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:22px">
+      A conversation opens only after that second yes. Organisations can set a threshold so that a
+      strong enough score matches automatically — a shelter that trusts the scoring can let the
+      obvious fits through and spend its attention on the borderline ones.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      Need a Paw? — screens captured from the running application with demo data. Pets, organisations
+      and people shown here are fictional.
+    </p>
+    <p>This page is a product walkthrough. It is not the application.</p>
+  </div>
+</footer>
+
+</body>
+</html>
