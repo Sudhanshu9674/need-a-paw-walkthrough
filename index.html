@@ -42,7 +42,7 @@
   .eyebrow { text-transform:uppercase; letter-spacing:.08em; font-size:.78rem; font-weight:700; color:var(--sage-600); margin-bottom:8px; }
 
   .steps { display:grid; gap:28px; margin-top:36px; }
-  @media (min-width:900px) { .steps { grid-template-columns:repeat(2,1fr); gap:36px 40px; } }
+  @media (min-width:900px) { .steps { grid-template-columns:repeat(2,1fr); gap:36px 40px; align-items:start; } }
   .step { background:#fff; border-radius:var(--radius); padding:20px; box-shadow:0 1px 2px rgba(55,59,52,.05),0 8px 24px rgba(55,59,52,.06); }
   .step .n { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:999px; background:var(--sage-100); color:var(--sage-700); font-weight:800; font-size:.9rem; margin-bottom:10px; }
   .step p { color:var(--muted); font-size:.98rem; }
@@ -297,6 +297,55 @@
       strong enough score matches automatically — a shelter that trusts the scoring can let the
       obvious fits through and spend its attention on the borderline ones.
     </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Listening</p>
+    <h2>The app asks, and the answers change it</h2>
+    <p>
+      Need a Paw? collects feedback from the people using it — adopters and organisations alike —
+      so that the app gets better at the thing it is for. One question at a time, in a card that
+      can be waved away, never a form and never a pop-up.
+    </p>
+    <p>
+      The questions differ by who is being asked, because the useful ones do. An adopter is asked
+      what brought them here and what makes adopting hard. An organisation is asked something only
+      they can answer: whether the compatibility scores are any good. They see the adopter and the
+      score; we only see the score.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>Asked where people already are</h3>
+        <p>
+          On the deck, not buried in a settings screen. One tap answers it, and it is gone for
+          good — the question never comes back once it has been answered or dismissed.
+        </p>
+        <img class="phone" src="screens/feedback-adopter.png" alt="An adopter being asked what brought them to the app, in a card above the pet deck" />
+      </div>
+
+      <div class="step">
+        <span class="n">2</span>
+        <h3>Organisations grade the matching</h3>
+        <p>
+          The most valuable question in the product. Shelters are the only people who can see both
+          the adopter and the score we gave them, and they have no reason to flatter it.
+        </p>
+        <img src="screens/feedback-shelter.png" alt="A shelter being asked whether the compatibility scores are about right" />
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>Dismissing is an answer too</h3>
+      <p>
+        A question most people wave away is a question worth rewriting, so dismissals are counted
+        alongside answers rather than quietly discarded. Written feedback is read without a name
+        attached to it — what someone is willing to tell you changes the moment their name is on it.
+      </p>
+    </div>
   </div>
 </section>
 
